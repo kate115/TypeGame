@@ -12,7 +12,14 @@
         <div>
           <input type="text" aria-label="current word" id="typed-value" />
           <button type="button" id="start">Start</button>
+          <p>Loading content from the API: <b id="name">...</b></p>
         </div>
         <script src="script.js"></script>
+        <script>
+          (async function() {
+              const { text } = await( await fetch(`/api/message`)).json();
+              document.querySelector('#name').textContent = text;
+          }())
+          </script>
       </body>
 </html>
